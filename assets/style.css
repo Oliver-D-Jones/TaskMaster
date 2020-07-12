@@ -1,0 +1,27 @@
+body{
+  background-color: skyblue;
+}
+#task_con{
+  background-color: lightblue;
+  background-image: url("background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.card-title{
+  border-bottom: solid 2px gold;
+  border-bottom: padding 1rem;
+}
+#task_color{
+  border-radius: 40%;
+  text-align: center;
+}
+.sub{
+  display: none;
+  margin-left: 4px;
+  margin-bottom: 4px;
+}
+.insert{
+  margin-top: 4px;
+}

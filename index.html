@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+    <title>TaskMaster</title>
+  </head>
+<body>
+  
+  <header class="container">
+    <div class="row d-flex">
+      <div class="col-12 bg-secondary my-2">
+        <form onsubmit="app.listController.addTask(event)">
+          <div class="form-group">
+            <input class="form-control col-sm-9 my-2" style="display: inline;" type="text" name="add_task" placeholder="Please Add To Your Tasks Here...">
+            <span class="col-sm-3 text-light">Task Color : <input type="color" id="task_color" name="task_color" value="#947DE8"></span>
+          </div>
+          <button class="btn-block btn-primary my-2" type="submit">Add Task</button>
+        </form>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container-fluid" id="task_con">
+      <div class="row d-flex" id="insert_tasks">
+
+      </div>
+    </div>
+    <script src="app/main.js" type="module"></script>
+  </main>
+</body>
+</html>
