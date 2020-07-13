@@ -31,6 +31,8 @@ class Store {
   }
   resetAll(){
     _state.lists = [];
+    this.saveState();
+
   }
   addTask(Task){
     _state.lists.push(Task);
