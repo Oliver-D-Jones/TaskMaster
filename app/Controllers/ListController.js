@@ -43,12 +43,12 @@ function _drawLists(){
     <div class="card">
       <div class="card-body" style="background-color:${tasksToDraw[i].color}">
         <button type="button" onclick="app.listController.removeTask('${elemID}')" class="btn btn-light btn-outline-warning btn-sm">X</button>
-        <h6 class="card-title">${tasksToDraw[i].task}</h6>
-        <p>Add Sub-Task:
+        <h6 class="card-title text-light">${tasksToDraw[i].task}</h6>
+        <p>Add Task:
         <button type="button" onclick="app.listController.showSub('${elemID}')" class="btn btn-dark btn-outline-secondary btn-sm"><b>+</b></button>
         </p>
         <p>
-        <input type="text" class="sub" placeholder="New Sub Task"/><button type="button" onclick="app.listController.addSub('${elemID}')" class="sub btn btn-light btn-sm">Add</button>
+        <input type="text" class="sub" placeholder="New Task"/><button type="button" onclick="app.listController.addSub('${elemID}')" class="sub btn btn-light btn-sm">Add</button>
         </p>
         <div class="subs row d-flex justify-content-center">`;
         for (let j = 0;j<tasksToDraw[i].subs.length;j++){
