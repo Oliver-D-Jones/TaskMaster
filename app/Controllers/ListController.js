@@ -62,7 +62,6 @@ function _drawLists(){
   }
   document.getElementById("insert_tasks").innerHTML = htmlTemplate;
 }
-
 function ConfirmDialog(message,func,id,sub) {
   $('<div></div>').appendTo('body')
     .html('<div><h6>' + message + '?</h6></div>')
@@ -82,10 +81,38 @@ function ConfirmDialog(message,func,id,sub) {
             func(id,sub);
 
           _drawLists();
+          !sub ? swal("OK!", "Your List Was Deleted!", "success") : swal("OK!", "Your Task Was Deleted!", "success") 
 
         },
         No: function() {
           $(this).dialog("close");
+
+        }
+      },
+      close: function(event, ui) {
+        $(this).remove();
+      }
+    });
+};
+function ConfirmDeleteAll(message,func) {
+  $('<div></div>').appendTo('body')
+    .html('<div><h6>' + message + '?</h6></div>')
+    .dialog({
+      modal: true,
+      title: 'Delete message',
+      zIndex: 10000,
+      autoOpen: true,
+      width: '34%',
+      resizable: true,
+      buttons: {
+        Yes: function() { 
+          $(this).dialog("close");
+          func();
+          _drawLists();
+          swal("OK!", "All Your Lists Were Deleted!", "success")         },
+        No: function() {
+          $(this).dialog("close");
+
         }
       },
       close: function(event, ui) {
@@ -94,6 +121,7 @@ function ConfirmDialog(message,func,id,sub) {
     });
 };
 
+
 //Public
 export default class ListController {
   constructor() {
@@ -101,6 +129,10 @@ export default class ListController {
     _drawLists();
   }
   //TODO: Your app will need the ability to create, and delete both lists and listItems
+  resetAll(evt){
+    ConfirmDeleteAll("Delete All Lists",_listService.resetAll)
+    _drawLists();
+  }
   addTask(e){
     e.preventDefault();
     let taskData = {

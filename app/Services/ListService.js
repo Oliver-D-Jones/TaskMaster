@@ -8,6 +8,9 @@ class ListService {
   //what methods will you need to do when this class is first 'constructed'?
   //NOTE You will need this code to persist your data into local storage, be sure to call the store method to save after each change
 
+  resetAll(){
+    _store.resetAll();
+  }
   addTask(Task){
       if (!Task.newTask) {
           console.error("Invalid Task, Empty Task");

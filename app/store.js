@@ -29,6 +29,9 @@ class Store {
   saveState() {
     localStorage.setItem("TaskMaster", JSON.stringify(_state));
   }
+  resetAll(){
+    _state.lists = [];
+  }
   addTask(Task){
     _state.lists.push(Task);
     this.saveState();
