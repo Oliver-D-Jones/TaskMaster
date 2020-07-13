@@ -62,6 +62,38 @@ function _drawLists(){
   }
   document.getElementById("insert_tasks").innerHTML = htmlTemplate;
 }
+
+function ConfirmDialog(message,func,id,sub) {
+  $('<div></div>').appendTo('body')
+    .html('<div><h6>' + message + '?</h6></div>')
+    .dialog({
+      modal: true,
+      title: 'Delete message',
+      zIndex: 10000,
+      autoOpen: true,
+      width: '34%',
+      resizable: true,
+      buttons: {
+        Yes: function() { 
+          $(this).dialog("close");
+          if(!sub)
+            func(id);
+          else
+            func(id,sub);
+
+          _drawLists();
+
+        },
+        No: function() {
+          $(this).dialog("close");
+        }
+      },
+      close: function(event, ui) {
+        $(this).remove();
+      }
+    });
+};
+
 //Public
 export default class ListController {
   constructor() {
@@ -80,8 +112,7 @@ export default class ListController {
     _drawLists();
   }
   removeTask(id){
-    _listService.removeTask(id);
-    _drawLists();
+    ConfirmDialog('Delete This List',_listService.removeTask,id,false);
   }
   showSub(id){
     let display= document.getElementById(id).getElementsByClassName("sub");
@@ -97,8 +128,7 @@ export default class ListController {
     _drawLists();
   }
   removeSub(sub,id){
-    _listService.removeSub(sub,id);
-    _drawLists();
+    ConfirmDialog('Delete This Task',_listService.removeSub,id,sub);
   }
   
   completedSub(sub,id){

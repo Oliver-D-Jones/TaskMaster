@@ -28,7 +28,7 @@ class ListService {
       _store.addSub(sub,index);
     }
   }
-  removeSub(sub,id){
+  removeSub(id,sub){
     let listIndexToFind = findTask(id);
     let subIndexToFInd = _store.State.lists[listIndexToFind].subs.findIndex(s => s == sub);
     if(subIndexToFInd < 0)
